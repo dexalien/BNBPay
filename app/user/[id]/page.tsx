@@ -1,15 +1,32 @@
 "use client"
 
 import Link from "next/link"
+import { useParams } from "next/navigation"
 import { useState } from "react"
 import { ArrowLeft, Plus, Calendar, DollarSign, CreditCard } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { CreateSubscriptionModal } from "@/components/create-subscription-modal"
 
+type Subscription = {
+  id: number
+  name: string
+  amount: string
+  status: "active" | "cancelled"
+  nextBilling: string
+  startDate: string
+}
+
+type UserRecord = {
+  name: string
+  email: string
+  wallet: string
+  subscriptions: Subscription[]
+}
+
 // Mock data for user subscriptions
-const mockUserData = {
-  1: {
+const mockUserData: Record<string, UserRecord> = {
+  "1": {
     name: "Alice Johnson",
     email: "alice@example.com",
     wallet: "0x742d...4f2a",
@@ -40,7 +57,7 @@ const mockUserData = {
       },
     ],
   },
-  2: {
+  "2": {
     name: "Bob Smith",
     email: "bob@example.com",
     wallet: "0x8a3b...9c1d",
@@ -55,7 +72,7 @@ const mockUserData = {
       },
     ],
   },
-  3: {
+  "3": {
     name: "Carol White",
     email: "carol@example.com",
     wallet: "0x1f5e...2b8c",
@@ -102,7 +119,7 @@ const mockUserData = {
       },
     ],
   },
-  4: {
+  "4": {
     name: "David Lee",
     email: "david@example.com",
     wallet: "0x9d2a...7e3f",
@@ -127,9 +144,11 @@ const mockUserData = {
   },
 }
 
-export default function UserDetailPage({ params }: { params: { id: string } }) {
+export default function UserDetailPage() {
+  const params = useParams<{ id: string }>()
+  const userId = typeof params?.id === "string" ? params.id : Array.isArray(params?.id) ? params?.id[0] : undefined
   const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false)
-  const userData = mockUserData[params.id as keyof typeof mockUserData]
+  const userData = userId ? mockUserData[userId as keyof typeof mockUserData] : undefined
 
   if (!userData) {
     return (

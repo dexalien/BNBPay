@@ -2,11 +2,12 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, UserPlus, Search, Users, Wallet } from 'lucide-react'
+import { ArrowLeft, UserPlus, Search, Users } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { CreateUserModal } from "@/components/create-user-modal"
+import { ConnectWalletButton } from "@/components/connect-wallet-button"
 
 // Mock data for users with subscriptions
 const mockUsers = [
@@ -78,10 +79,10 @@ export default function DashboardPage() {
                   Back to Home
                 </Button>
               </Link>
-              <Button className="bg-yellow-500 text-black hover:bg-yellow-400">
-                <Wallet className="mr-2 size-4" />
-                Connect Wallet
-              </Button>
+              <ConnectWalletButton
+                size="sm"
+                className="bg-yellow-500 text-black hover:bg-yellow-400"
+              />
             </div>
           </div>
         </div>
@@ -218,9 +219,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Create User Modal */}
-      <CreateUserModal 
-        isOpen={isCreateModalOpen} 
-        onClose={() => setIsCreateModalOpen(false)} 
+      <CreateUserModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
       />
     </div>
   )
