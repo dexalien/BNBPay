@@ -18,10 +18,11 @@ export default function Home() {
               />
               <span className="text-xl font-bold text-white">BNBPay</span>
             </div>
-            <Button className="bg-yellow-500 text-black hover:bg-yellow-400">
-              <Wallet className="mr-2 size-4" />
-              Connect Wallet
-            </Button>
+            <Link href="/dashboard">
+              <Button variant="outline" className="border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/10">
+                Login
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
