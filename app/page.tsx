@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, Wallet, LinkIcon, Share2, BarChart3, Shield, Zap, Globe } from 'lucide-react'
+import { ArrowRight, Wallet, LinkIcon, Share2, BarChart3, Shield, Zap, Globe, Lock, Clock } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Logo } from "@/components/logo"
@@ -7,39 +7,68 @@ import { Logo } from "@/components/logo"
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
+      <nav className="sticky top-0 z-50 border-b border-neutral-800/50 bg-black/80 backdrop-blur-md">
+        <div className="container mx-auto px-4">
+          <div className="flex h-16 items-center justify-between">
+            <div className="flex items-center gap-2">
+              <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Nov%2015%2C%202025%2C%2008_50_12%20PM-hL9QGzQ5vODarVi4eDYp1Yrxfu7dMk.png"
+                alt="BNBPay Logo"
+                className="size-10 object-contain"
+              />
+              <span className="text-xl font-bold text-white">BNBPay</span>
+            </div>
+            <Button className="bg-yellow-500 text-black hover:bg-yellow-400">
+              <Wallet className="mr-2 size-4" />
+              Connect Wallet
+            </Button>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-black via-neutral-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(234,179,8,0.1),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(234,179,8,0.08),transparent_50%)]" />
         
         <div className="container relative mx-auto px-4 py-24 md:py-32">
-          <div className="flex flex-col items-center text-center">
-            <Logo className="mb-12" />
-            
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 px-4 py-2 text-sm text-yellow-400">
-              <Zap className="size-4" />
-              <span>Built on BNB Chain</span>
+          <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-center">
+            {/* Text Content */}
+            <div className="max-w-2xl text-center lg:text-left">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 px-4 py-2 text-sm text-yellow-400">
+                <Zap className="size-4" />
+                <span>Built on BNB Chain</span>
+              </div>
+              
+              <h1 className="mb-6 text-balance text-5xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
+                Digital Currency Payments
+                <span className="block bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+                  Without The Hassle
+                </span>
+              </h1>
+              
+              <p className="mb-10 text-balance text-lg text-neutral-400 md:text-xl">
+                Receive cryptocurrency payments effortlessly. Zero complicated setup, zero hidden charges. Experience swift, protected, and dependable blockchain transactions.
+              </p>
+              
+              <div className="flex flex-col gap-4 sm:flex-row lg:justify-start">
+                <Button size="lg" className="bg-yellow-500 text-black hover:bg-yellow-400">
+                  Start Now
+                  <ArrowRight className="ml-2 size-4" />
+                </Button>
+                <Button size="lg" variant="outline" className="border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/10">
+                  Watch Demo
+                </Button>
+              </div>
             </div>
             
-            <h1 className="mb-6 max-w-4xl text-balance text-5xl font-bold tracking-tight text-white md:text-7xl">
-              Digital Currency Payments
-              <span className="block bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                Without The Hassle
-              </span>
-            </h1>
-            
-            <p className="mb-10 max-w-2xl text-balance text-lg text-neutral-400 md:text-xl">
-              Receive cryptocurrency payments effortlessly. Zero complicated setup, zero hidden charges. Experience swift, protected, and dependable blockchain transactions.
-            </p>
-            
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Button size="lg" className="bg-yellow-500 text-black hover:bg-yellow-400">
-                Start Now
-                <ArrowRight className="ml-2 size-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/10">
-                Watch Demo
-              </Button>
+            {/* Large Cat Logo */}
+            <div className="flex-shrink-0">
+              <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Nov%2015%2C%202025%2C%2008_50_12%20PM-hL9QGzQ5vODarVi4eDYp1Yrxfu7dMk.png"
+                alt="BNBPay Mascot"
+                className="size-64 object-contain md:size-96 lg:size-[500px]"
+              />
             </div>
           </div>
         </div>
@@ -109,6 +138,11 @@ export default function Home() {
       <section className="border-t border-neutral-800 bg-gradient-to-br from-yellow-500/10 via-black to-black py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Nov%2015%2C%202025%2C%2008_46_49%20PM-UH1PRLUX64ukoBYUB8RHiLX7Yjse1c.png"
+              alt="BNBPay Cat"
+              className="mb-8 size-40 object-contain"
+            />
             <h2 className="mb-4 max-w-3xl text-balance text-4xl font-bold text-white md:text-5xl">
               Launch Your Crypto Payment Solution Today
             </h2>
